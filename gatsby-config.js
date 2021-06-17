@@ -1,6 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: "blog_neko_personal",
+    title: "Neko",
   },
-  plugins: ["gatsby-plugin-gatsby-cloud"],
+  plugins: [
+    "gatsby-plugin-gatsby-cloud",
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp"
+  ],
 };
