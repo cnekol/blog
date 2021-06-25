@@ -1,26 +1,31 @@
 {
-  "name": "blog_neko_personal",
-  "version": "1.0.0",
+  "name": "gatsby-starter-hello-world",
   "private": true,
-  "description": "blog_neko_personal",
-  "author": "Neko",
-  "keywords": [
-    "gatsby"
-  ],
+  "description": "A simplified bare-bones starter for Gatsby",
+  "version": "0.1.0",
+  "license": "0BSD",
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
     "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
     "gatsby": "^3.6.2",
-    "gatsby-plugin-gatsby-cloud": "^2.7.1",
-    "gatsby-plugin-image": "^1.7.1",
-    "gatsby-plugin-sharp": "^3.7.1",
-    "gatsby-source-filesystem": "^3.7.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
