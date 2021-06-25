@@ -1,20 +1,5 @@
-//import React
-import * as React from 'react'
-import Layout from '../components/layout'
-import { StaticImage } from 'gatsby-plugin-image'
+import React from "react"
 
-//define my component
-const IndexPage = () => {
-  return (
-    <Layout pageTitle="Home Page">
-      <p>I'm Neko.</p>
-      <StaticImage
-        alt="img fromwallhaven"
-        src="../images/neko.jpg"
-        />
-    </Layout>
-  )
+export default function Home() {
+  return <div>Hello world!</div>
 }
-
-//export my component
-export default IndexPage
