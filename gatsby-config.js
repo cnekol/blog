@@ -5,8 +5,8 @@ module.exports = {
       name: `Neko`,
       summary: `who walking on a wild way.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `A Neko's personal blog site.`,
+    siteUrl: `https://neko.icu/`,
     social: {
       twitter: `cnekol`,
     },
@@ -112,8 +112,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Neko Blog`,
+        short_name: `neko`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
