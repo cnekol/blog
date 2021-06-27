@@ -343,4 +343,17 @@ a:focus {
   ol {
     list-style-position: inside;
   }
+
+  .post-list-item {
+    margin-bottom: var(--spacing-16);
+    margin-top: var(--spacing-16);
+    transition: transform 50ms ease-out;
+  }
+
+  .post-list-item:hover {
+    transform: translate(-0px, 0px);
+  }
+  .post-list-item:active {
+    transform: Scale(1.03);
+  }
 }
