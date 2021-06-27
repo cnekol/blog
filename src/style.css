@@ -265,8 +265,13 @@ a:focus {
 }
 
 .post-list-item {
-  margin-bottom: var(--spacing-8);
-  margin-top: var(--spacing-8);
+  margin-bottom: var(--spacing-16);
+  margin-top: var(--spacing-16);
+  transition: transform 600ms ease-out;
+}
+
+.post-list-item:hover {
+  transform: translate(-24px, 0px);
 }
 
 .post-list-item p {
@@ -282,7 +287,7 @@ a:focus {
 }
 
 .post-list-item header {
-  margin-bottom: var(--spacing-4);
+  margin-bottom: var(--spacing-2);
 }
 
 .header-link-home {
