@@ -3,7 +3,7 @@ module.exports = {
     title: `NEKO`,
     author: {
       name: `Neko`,
-      summary: `who walking on a wild way.`,
+      summary: `我在找 圆珠笔 的颜色`,
     },
     description: `A Neko's personal blog site.`,
     siteUrl: `https://neko.icu/`,

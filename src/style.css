@@ -9,9 +9,10 @@
   --maxWidth-xl: 36rem;
   --maxWidth-2xl: 42rem;
   --maxWidth-3xl: 48rem;
-  --maxWidth-4xl: 56rem;
+  --maxWidth-4xl: 72rem;
+  /* --maxWidth-4xl: 56rem; */
   --maxWidth-full: "100%";
-  --maxWidth-wrapper: var(--maxWidth-2xl);
+  --maxWidth-wrapper: var(--maxWidth-4xl);
   --spacing-px: "1px";
   --spacing-0: 0;
   --spacing-1: 0.25rem;
@@ -54,7 +55,8 @@
   --fontSize-5: 2.074rem;
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
-  --color-primary: #005b99;
+  --color-primary: #1c1d29;
+  /* --color-primary: #005b99; */
   --color-text: #2e353f;
   --color-text-light: #4f5969;
   --color-heading: #1a202c;
@@ -116,14 +118,16 @@ h6 {
   font-weight: var(--fontWeight-bold);
   color: var(--color-heading);
 }
-
+/* h1 title control */
 h1 {
   font-weight: var(--fontWeight-black);
   font-size: var(--fontSize-6);
   color: var(--color-heading-black);
 }
 
+/* h2 title control */
 h2 {
+  font-weight: var(--fontWeight-semibold);
   font-size: var(--fontSize-5);
 }
 
@@ -255,7 +259,8 @@ a:focus {
 }
 
 .main-heading {
-  font-size: var(--fontSize-7);
+  font-weight: var(--fontWeight-normal);
+  font-size: var(--fontSize-3);
   margin: 0;
 }
 
@@ -269,7 +274,8 @@ a:focus {
 }
 
 .post-list-item h2 {
-  font-size: var(--fontSize-4);
+  font-size: var(--fontSize-7);
+  font-weight: var(--fontWeight-medium);
   color: var(--color-primary);
   margin-bottom: var(--spacing-2);
   margin-top: var(--spacing-0);
@@ -280,10 +286,10 @@ a:focus {
 }
 
 .header-link-home {
-  font-weight: var(--fontWeight-bold);
+  font-weight: var(--fontWeight-normal);
   font-family: var(--font-heading);
   text-decoration: none;
-  font-size: var(--fontSize-2);
+  font-size: var(--fontSize-3);
 }
 
 .bio {
@@ -304,6 +310,8 @@ a:focus {
 
 .blog-post header h1 {
   margin: var(--spacing-0) var(--spacing-0) var(--spacing-4) var(--spacing-0);
+  font-size: var(--fontSize-7);
+  font-weight: var(--fontWeight-medium);
 }
 
 .blog-post header p {
