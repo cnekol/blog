@@ -272,7 +272,7 @@ a:focus {
 .post-list-item {
   margin-bottom: var(--spacing-16);
   margin-top: var(--spacing-16);
-  transition: transform 600ms ease-out;
+  transition: transform 600ms ease-in-out;
 }
 
 .post-list-item:hover {
@@ -360,7 +360,7 @@ a:focus {
   .post-list-item {
     margin-bottom: var(--spacing-16);
     margin-top: var(--spacing-16);
-    transition: transform 50ms ease-out;
+    transition: transform 50ms ease-in-out;
   }
 
   .post-list-item:hover {
