@@ -27,28 +27,34 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
         plugins: [
+          `gatsby-remark-images`,
           {
-            resolve: `gatsby-remark-images`,
+            resolve: `gatsby-plugin-mdx`,
             options: {
-              maxWidth: 630,
+              gatsbyRemarkPlugins: [
+                {
+                  resolve: `gatsby-remark-images`,
+                  options: {
+                    maxWidth: 2000,
+                  },
+                },
+              ],
             },
           },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
         ],
+        extensions: [`.mdx`, `.md`],
+        defaultLayouts: {
+          blog: require.resolve("./src/templates/blog-post.js"),
+          default: require.resolve("./src/components/layout.js"),
+        },
       },
     },
+
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
