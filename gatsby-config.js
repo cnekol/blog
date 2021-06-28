@@ -119,7 +119,14 @@ module.exports = {
         icon: `src/images/neko-icon.png`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-robots-txt`,
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://neko.icu",
+        sitemap: "https://neko.icu/sitemap.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-gatsby-cloud`,
