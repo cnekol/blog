@@ -4,8 +4,7 @@ date: "2020-09-28T04:29:03.284Z"
 description: "酒的单价变高了"
 ---
 
-![atSuptermarket](atSupermarket.jpg)
-（图 • 彼时下班去超市买醉）
+![彼时下班去超市买醉](atSupermarket.jpg)
 
 不可单纯说无法入睡是敌人还是朋友。毕竟期间有过很多认知与想法。
 
