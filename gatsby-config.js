@@ -51,12 +51,12 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: `ADD YOUR TRACKING ID HERE`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-34342626-1`,
+      },
+    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -113,11 +113,11 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Neko Blog`,
-        short_name: `neko`,
+        short_name: `NEKO`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
+        theme_color: `#2d2b31`,
+        display: `standalone`,
         icon: `src/images/neko-icon.png`, // This path is relative to the root of the site.
       },
     },
@@ -125,6 +125,6 @@ module.exports = {
     `gatsby-plugin-gatsby-cloud`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 }
