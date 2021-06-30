@@ -14,8 +14,8 @@ const Layout = ({ location, title, children }) => {
     )
   } else {
     header = (
-      <Link className="header-link-home" to="/">
-        <div>← {title}</div>
+      <Link className="header-link-home" to="/blog/">
+        <div>{title}</div>
       </Link>
     )
   }
@@ -25,7 +25,9 @@ const Layout = ({ location, title, children }) => {
       <header className="global-header">{header}</header>
       <main>{children}</main>
       <footer>
-        © {new Date().getFullYear()} never ❤ neko {` `}
+        © {new Date().getFullYear()},never{" "}
+        <span class="material-icons">volunteer_activism</span>{" "}
+        <Link to="/">neko</Link>
         {/* <a href="https://neko.icu">❤</a> */}
       </footer>
     </div>

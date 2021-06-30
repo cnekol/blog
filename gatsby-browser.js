@@ -1,6 +1,7 @@
 // custom typefaces
 import "@fontsource/noto-sans-sc"
 import "@fontsource/noto-serif-sc"
+import "@fontsource/material-icons"
 import "typeface-montserrat"
 import "typeface-merriweather"
 // normalize CSS across browsers

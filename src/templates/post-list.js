@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
+/* import Bio from "../components/bio" */
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
@@ -14,13 +14,13 @@ class BlogList extends React.Component {
     const isFirst = currentPage === 1
     const isLast = currentPage === numPages
     const prevPage =
-      currentPage - 1 === 1 ? "/" : "/" + (currentPage - 1).toString()
-    const nextPage = "/" + (currentPage + 1).toString()
+      currentPage - 1 === 1 ? "/blog/" : "/blog/" + (currentPage - 1).toString()
+    const nextPage = "/blog/" + (currentPage + 1).toString()
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <Seo title="All posts" />
-        <Bio />
+        {/* <Bio /> */}
         <ol style={{ listStyle: `none` }}>
           {posts.map(post => {
             const title = post.frontmatter.title || post.fields.slug

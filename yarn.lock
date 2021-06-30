@@ -1106,6 +1106,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fontsource/material-icons@^4.4.5":
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/@fontsource/material-icons/-/material-icons-4.4.5.tgz#12afd469186382b4f08684927c7b75e47559ae6c"
+  integrity sha512-/J1UhmwLkcHjXvRAH63/pghttPJQwq6hZ11fCNv7syS5Ym5saTV3fm6J5SyoPJ/+s0HcNyiddGmcAOOVrBkIGA==
+
 "@fontsource/noto-sans-sc@^4.4.5":
   version "4.4.5"
   resolved "https://registry.yarnpkg.com/@fontsource/noto-sans-sc/-/noto-sans-sc-4.4.5.tgz#b1d6e01cb1ff2c9190ab4dd284d0da3ceff73585"

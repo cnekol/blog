@@ -6,7 +6,7 @@ module.exports = {
       summary: `一个用小布尔乔亚下酒的无产阶级`,
     },
     description: `A Neko's personal blog site.`,
-    siteUrl: `https://neko.icu/`,
+    siteUrl: `https://neko.icu`,
     social: {
       twitter: `cnekol`,
     },
@@ -123,7 +123,7 @@ module.exports = {
       resolve: "gatsby-plugin-robots-txt",
       options: {
         host: "https://neko.icu",
-        sitemap: "https://neko.icu/sitemap.xml",
+        sitemap: "https://neko.icu/sitemap/sitemap-0.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },

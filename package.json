@@ -8,6 +8,7 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "@fontsource/material-icons": "^4.4.5",
     "@fontsource/noto-sans-sc": "^4.4.5",
     "@fontsource/noto-serif-sc": "^4.4.5",
     "@mdx-js/mdx": "^1.6.22",
