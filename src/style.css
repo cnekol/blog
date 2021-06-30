@@ -251,7 +251,13 @@ a:focus {
 
 .landing-page-wrapper {
   margin: var(--spacing-0) auto;
-  padding: var(--spacing-10) var(--spacing-5);
+}
+
+.landing-page-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .global-wrapper {
