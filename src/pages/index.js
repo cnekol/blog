@@ -1,9 +1,12 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import Seo from "../components/seo"
+
 const LandingPage = ({ data }) => {
   return (
-    <body className="landing-page-wrapper">
+    <main className="landing-page-wrapper">
+      <Seo title="NEKO" />
       <div className="landing-page-title">
         <Link to="/blog">
           <span class="material-icons">catching_pokemon</span>
@@ -11,8 +14,11 @@ const LandingPage = ({ data }) => {
         <h1>
           <Link to="/blog">{data.site.siteMetadata.title}</Link>
         </h1>
+        <Link to="/blog">
+          <p>实事求是。</p>
+        </Link>
       </div>
-    </body>
+    </main>
   )
 }
 
