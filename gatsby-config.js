@@ -112,7 +112,7 @@ module.exports = {
       options: {
         name: `Neko Blog`,
         short_name: `NEKO`,
-        start_url: `/blog/`,
+        start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#2d2b31`,
         display: `standalone`,
