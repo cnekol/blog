@@ -8,9 +8,9 @@ const LandingPage = ({ data }) => {
     <main className="landing-page-wrapper">
       <Seo title="NEKO" />
       <div className="landing-page-title">
-        <Link to="/blog">
+        {/* <Link to="/blog">
           <span class="material-icons">catching_pokemon</span>
-        </Link>
+        </Link> */}
         <h1>
           <Link to="/blog">{data.site.siteMetadata.title}</Link>
         </h1>
