@@ -1068,17 +1068,17 @@
     ts-node "^9"
     tslib "^2"
 
-"@fontsource/material-icons@^4.5.0":
+"@fontsource/material-icons@^4.4.5":
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/@fontsource/material-icons/-/material-icons-4.5.0.tgz#8b9e5d84a1f3fac973118c8283b000b352b44d7f"
   integrity sha512-vFMpnkKwbtJLLHbUDI163QWX9Ox28A6i1vALfAKlpBh54yp8D0cu1/YGyrU5whvaXejLSBuyS7lRwr/TdRNmhA==
 
-"@fontsource/noto-sans-sc@^4.5.1":
+"@fontsource/noto-sans-sc@^4.4.5":
   version "4.5.1"
   resolved "https://registry.yarnpkg.com/@fontsource/noto-sans-sc/-/noto-sans-sc-4.5.1.tgz#ae50d99f1957366dd97ba1053588ca2b2312802a"
   integrity sha512-VwDaTg62ePjqPf5knBMBOwmBYPNUSxTevk+dI2wo++X50R17wDyVCvKoUshvLu3mPiEyI0yotbfUGPoDv42LMg==
 
-"@fontsource/noto-serif-sc@^4.5.1":
+"@fontsource/noto-serif-sc@^4.4.5":
   version "4.5.1"
   resolved "https://registry.yarnpkg.com/@fontsource/noto-serif-sc/-/noto-serif-sc-4.5.1.tgz#20e4e6c27d6cfb6367c08c16658807529f685c85"
   integrity sha512-Ssj7UeA0Qz1hQJLNqHeojPnBwPVVHglVcDIb/WNGAJeLXCJKmiQgNzGusyvlWCd+qiF8PZx8PexzBx+y+2qE3Q==
