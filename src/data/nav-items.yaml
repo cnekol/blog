@@ -1,0 +1,140 @@
+#- title: Getting started
+# pages:
+#    - path: /getting-started
+#- title: Demo
+#  pages:
+#    - path: /demo
+#- title: Gallery
+#  pages:
+#    - path: /gallery
+#- title: Contributions
+#  pages:
+#    - path: /contributions
+#- title: Guides
+#  pages:
+#    - title: Authoring MDX
+#      path: /guides/MDX
+#    - title: Configuration
+#      path: /guides/configuration
+#    - title: Gatsby Sketch kit
+#      path: /guides/sketch-kit
+#    - title: Hosting
+#      path: /guides/hosting
+#    - title: Navigation
+#      path: /guides/navigation/sidebar
+#    - title: npm scripts
+#      path: /guides/npm-scripts
+#    - title: Shadowing
+#      path: /guides/shadowing
+#    - title: Styling
+#      path: /guides/styling
+#    - title: v2.0 Migration
+#      path: /guides/v2-migration
+#- title: Components
+#  pages:
+#    - title: Accordion
+#      path: /components/Accordion
+#    - title: AnchorLinks
+#      path: /components/AnchorLinks
+#    - title: ArtDirection
+#      path: /components/ArtDirection
+#    - title: ArticleCard
+#      path: /components/ArticleCard
+#    - title: Aside
+#      path: /components/Aside
+#    - title: Caption
+#      path: /components/Caption
+#    - title: Code blocks
+#      path: /components/code-blocks
+#    - title: DoDontExample
+#      path: /components/DoDontExample
+#    - title: DoDontRow
+#      path: /components/DoDontRow
+#    - title: FeatureCard
+#      path: /components/FeatureCard
+#    - title: FeedbackDialog
+#      path: /components/FeedbackDialog
+#    - title: GifPlayer
+#      path: /components/GifPlayer
+#    - title: Grid
+#      path: /components/Grid
+#    - title: ImageCard
+#      path: /components/ImageCard
+#    - title: ImageGallery
+#      path: /components/ImageGallery
+#    - title: InlineNotification
+#      path: /components/InlineNotification
+#    - title: Markdown
+#      path: /components/markdown
+#    - title: MediumPosts
+#      path: /components/MediumPosts
+#    - title: MiniCard
+#      path: /components/MiniCard
+#    - title: PageDescription
+#      path: /components/PageDescription
+#    - title: ResourceCard
+#      path: /components/ResourceCard
+#    - title: SquareCard
+#      path: /components/SquareCard
+#    - title: Tabs
+#      path: /components/Tabs
+#    - title: Title
+#      path: /components/Title
+#    - title: Video
+#      path: /components/Video
+- title: 2021
+  pages:
+    - title: 节自「开诚忠告十八省之豪杰」
+      path: /blog/2021/节自「开诚忠告十八省之豪杰」
+    - title: 翻译腔
+      path: /blog/2021/翻译腔
+    - title: 日本語テスト
+      path: /blog/2021/日本語テスト
+    - title: 多做二分之一个梦
+      path: /blog/2021/多做二分之一个梦
+    - title: 从微信对人表达的压抑出发
+      path: /blog/2021/从微信对人表达的压抑出发
+    - title: 「自拍」留念
+      path: /blog/2021/「自拍」留念
+    - title: 「兴趣是最好的老师」
+      path: /blog/2021/「兴趣是最好的老师」
+- title: 2020
+  pages:
+    - title: 节自「在延安文艺座谈会上的讲话」
+      path: /blog/2020/节自「在延安文艺座谈会上的讲话」
+    - title: 粗看日记
+      path: /blog/2020/粗看日记
+    - title: 买醉超标
+      path: /blog/2020/买醉超标
+- title: 2019
+  pages:
+    - title: 拉货的车
+      path: /blog/2019/拉货的车
+- title: 2017
+  pages:
+    - title: 这一点都不浪漫
+      path: /blog/2017/这一点都不浪漫
+    - title: 自由与痛苦
+      path: /blog/2017/自由与痛苦
+    - title: 无用之技-NAS
+      path: /blog/2017/无用之技-NAS
+    - title: 我以为的设计
+      path: /blog/2017/我以为的设计
+    - title: 一个产品的研发流程（2）
+      path: /blog/2017/一个产品的研发流程（2）
+    - title: 一个产品的研发流程（1）
+      path: /blog/2017/一个产品的研发流程（1）
+- title: 2016
+  pages:
+    - title: 荒唐
+      path: /blog/2016/荒唐
+    - title: 写在我的25岁
+      path: /blog/2016/写在我的25岁
+- title: 2015
+  pages:
+    - title: 随笔
+      path: /blog/2015/随笔
+    - title: 传承
+      path: /blog/2015/传承
+    - title: 不完全爆炸
+      path: /blog/2015/不完全爆炸
