@@ -10,18 +10,6 @@ export const userConfig: Partial<UserConfig> = {
     socialLinks: [],
     categoryMap: [{ name: 'Neko', path: 'neko' }],
   },
-  appearance: {
-    theme: 'system',
-    locale: 'zh-cn',
-    colorsLight: {
-      primary: '#1C2024',
-      background: '#FCFCFD',
-    },
-    colorsDark: {
-      primary: '#EDEEF0',
-      background: '#111113',
-    },
-  },
   seo: {
     twitter: '@cnekol',
   },
