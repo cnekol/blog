@@ -4,7 +4,7 @@ import {
   defineConfig,
   presetIcons,
   presetTypography,
-  presetUno,
+  presetWind3,
   transformerVariantGroup,
 } from 'unocss'
 import presetTheme from 'unocss-preset-theme'
@@ -47,14 +47,9 @@ export default defineConfig({
       /^col-(\d+)-(\d)$/,
       ([, start, end]) => ({ 'grid-column': `${start}/${end}` }),
     ],
-    [
-      /^scrollbar-hide$/,
-      ([_]) => `.scrollbar-hide { scrollbar-width:none;-ms-overflow-style: none; }
-      .scrollbar-hide::-webkit-scrollbar {display:none;}`,
-    ],
   ],
   presets: [
-    presetUno(),
+    presetWind3(),
     presetTypography({ cssExtend }),
     presetAttributify(),
     presetIcons({ scale: 1.2, warn: true }),

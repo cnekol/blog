@@ -1,6 +1,7 @@
 ---
 title: 无用之技 —— NAS
-date: 2017-04-15
+pubDate: 2017-04-15
+categories: ['Articles']
 description: 自年前出于兴趣着手研习至今，已有两三月
 ---
 

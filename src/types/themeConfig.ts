@@ -1,4 +1,4 @@
-import type { Link, Meta } from 'astro-seo'
+import type { SEOProps } from 'astro-seo'
 import type {
   AvailableLanguage,
   BooleanString,
@@ -13,6 +13,9 @@ import type { LANGUAGES } from '../i18n.ts'
 export type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
 }
+
+type SEOLink = NonNullable<NonNullable<SEOProps['extend']>['link']>[number]
+type SEOMeta = NonNullable<NonNullable<SEOProps['extend']>['meta']>[number]
 
 export interface ThemeConfig {
   site: ConfigSite
@@ -49,8 +52,8 @@ export interface ConfigAppearance {
 
 export interface ConfigSEO {
   twitter: string
-  meta: Partial<Meta>[]
-  link: Partial<Link>[]
+  meta: SEOMeta[]
+  link: SEOLink[]
 }
 
 export interface ConfigComment {
