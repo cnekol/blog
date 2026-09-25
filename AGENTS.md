@@ -3,6 +3,12 @@
 本仓库正从 fork 的 `astro-theme-typography` 博客主题，重构为 Neko 的个人网站。
 以下决策已与站长确认，新会话请直接按此执行，不必重新讨论。
 
+## 协作约定
+
+- 提交、PR 标题与描述、代码注释中**不加任何 agent 署名**（不写 `Co-Authored-By`、会话链接、"Generated with …"）。
+  提交作者与提交者统一为 `cnekol <conan.neko.lin@gmail.com>`。
+- PR 标题与描述用英文；提交信息用英文（Conventional Commits）。
+
 ## 已定决策
 
 - **身份**：只使用 “Neko” 一个名字。设计师是其中一个身份，生活/写作是另一个身份。
