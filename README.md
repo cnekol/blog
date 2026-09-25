@@ -37,6 +37,9 @@ draft: false          # true：只在本地 dev 可见
 
 作品案例放在 `apps/work/src/content/projects/`，从 `_template.md` 复制。
 
-## 部署
+## 文档
 
-见 [docs/deploy.md](docs/deploy.md)。
+- [docs/decisions.md](docs/decisions.md) — 决策记录
+- [docs/roadmap.md](docs/roadmap.md) — 进度与待办
+- [docs/design.md](docs/design.md) — 设计规范
+- [docs/deploy.md](docs/deploy.md) — 部署
