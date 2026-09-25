@@ -1,0 +1,42 @@
+---
+import type { Props as BaseProps } from '@neko/design/BaseLayout.astro'
+import BaseLayout from '@neko/design/BaseLayout.astro'
+import { email as contactEmail, sites } from '@neko/design/sites'
+import { isPlaceholder, siteName } from '~/lib/work'
+import '~/styles/work.css'
+
+type Props = Omit<BaseProps, 'siteName'>
+
+const path = Astro.url.pathname
+const placeholder = await isPlaceholder()
+const nav = placeholder
+  ? []
+  : [
+      { href: '/', label: '作品' },
+      { href: '/about/', label: '履历' },
+    ]
+---
+
+<BaseLayout {...Astro.props} noindex={Astro.props.noindex || placeholder} siteName={siteName} bodyClass="work">
+  <header class="work-header">
+    <a class="work-title" href="/">Neko</a>
+    <nav aria-label="主导航">
+      {
+        nav.map((item) => (
+          <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>
+            {item.label}
+          </a>
+        ))
+      }
+      <a href={`mailto:${contactEmail}`}>联系</a>
+    </nav>
+  </header>
+  <main id="main" class="work-main">
+    <slot />
+  </main>
+  <footer class="work-footer">
+    <span>© {new Date().getFullYear()} Neko</span>
+    <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+    <a href={sites.site.url}>写作与生活 →</a>
+  </footer>
+</BaseLayout>

@@ -1,0 +1,33 @@
+---
+import { email as contactEmail, sites } from '@neko/design/sites'
+import WorkLayout from '~/layouts/WorkLayout.astro'
+
+// TODO(站长)：补充真实履历
+const experience: { period: string; org: string; title: string }[] = []
+---
+
+<WorkLayout title="履历" description="Neko 的履历与联系方式">
+  <h1 class="page-title">履历</h1>
+  <div class="case">
+    <p>产品设计师。写作与生活在 <a href={sites.site.url}>neko.icu</a>。</p>
+    <h2>经历</h2>
+    {
+      experience.length === 0 ? (
+        <p>整理中。</p>
+      ) : (
+        <dl class="meta-list">
+          {experience.map((item) => (
+            <div>
+              <dt>{item.period}</dt>
+              <dd>
+                {item.org} · {item.title}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      )
+    }
+    <h2>联系</h2>
+    <p><a href={`mailto:${contactEmail}`}>{contactEmail}</a></p>
+  </div>
+</WorkLayout>

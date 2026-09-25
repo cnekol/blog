@@ -1,0 +1,43 @@
+---
+import { sites } from '@neko/design/sites'
+import SiteLayout from '~/layouts/SiteLayout.astro'
+import { formatDate, getListedWriting, isoDate, writingUrl } from '~/lib/writing'
+import { siteDescription, siteName } from '~/lib/site'
+
+const recent = (await getListedWriting()).slice(0, 8)
+---
+
+<SiteLayout title={siteName} description={siteDescription}>
+  <section class="intro prose">
+    <p>我是 Neko。这里放写作与生活；设计工作在 <a href={sites.work.url}>work.neko.icu</a>。</p>
+  </section>
+
+  <section aria-labelledby="recent">
+    <h2 id="recent" class="section-title">近作</h2>
+    <ul class="entry-list">
+      {
+        recent.map((entry) => (
+          <li>
+            <a href={writingUrl(entry)}>{entry.data.title}</a>
+            <time datetime={isoDate(entry.data.pubDate)}>{formatDate(entry.data.pubDate)}</time>
+          </li>
+        ))
+      }
+    </ul>
+    <p><a href="/writing/">全部文章 →</a></p>
+  </section>
+</SiteLayout>
+
+<style>
+  .intro {
+    margin-bottom: var(--space-16);
+    font-size: var(--text-lg);
+  }
+  .section-title {
+    margin: 0 0 var(--space-4);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-muted);
+  }
+</style>
