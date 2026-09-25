@@ -2,19 +2,22 @@
 import type { Props as BaseProps } from '@neko/design/BaseLayout.astro'
 import BaseLayout from '@neko/design/BaseLayout.astro'
 import { email as contactEmail, sites } from '@neko/design/sites'
-import { siteName } from '~/lib/work'
+import { isPlaceholder, siteName } from '~/lib/work'
 import '~/styles/work.css'
 
 type Props = Omit<BaseProps, 'siteName'>
 
 const path = Astro.url.pathname
-const nav = [
-  { href: '/', label: '作品' },
-  { href: '/about/', label: '履历' },
-]
+const placeholder = await isPlaceholder()
+const nav = placeholder
+  ? []
+  : [
+      { href: '/', label: '作品' },
+      { href: '/about/', label: '履历' },
+    ]
 ---
 
-<BaseLayout {...Astro.props} siteName={siteName} bodyClass="work">
+<BaseLayout {...Astro.props} noindex={Astro.props.noindex || placeholder} siteName={siteName} bodyClass="work">
   <header class="work-header">
     <a class="work-title" href="/">Neko</a>
     <nav aria-label="主导航">
