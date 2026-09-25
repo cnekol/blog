@@ -17,7 +17,7 @@
 - **样式用手写 CSS + CSS 变量 token**，去掉 UnoCSS：两站共享 token 更直接，也不需要学工具类语法。
 - **页面过渡用 Astro 自带的 View Transitions**（`ClientRouter`），去掉 swup。
 - **保留** remark-math + rehype-katex、Shiki、RSS、sitemap。
-- **同一仓库、pnpm workspace monorepo**（`apps/site`、`apps/work`、`packages/design`）。仓库计划由 `blog` 改名为 `neko.icu`。
+- **同一仓库、pnpm workspace monorepo**（`apps/site`、`apps/work`、`packages/design`）。仓库已由 `blog` 改名为 `neko.icu`（2026-09-25）。
 
 ## 内容模型
 

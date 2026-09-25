@@ -9,18 +9,18 @@
 - `packages/design`：tokens、基础样式、BaseLayout（含 View Transitions）、Seo、站点常量。
 - 两个 `wrangler.jsonc`；部署文档 `docs/deploy.md`。
 - 临时 `netlify.toml` / `vercel.json` 停掉旧平台对本仓库的构建。
+- 合并 [cnekol/neko.icu#12](https://github.com/cnekol/neko.icu/pull/12)；关闭旧的 dependabot PR。
+- 2026-09-25：GitHub 仓库由 `blog` 改名为 `neko.icu`。
 
 ## 待办
 
 按顺序：
 
-1. 合并 [cnekol/blog#12](https://github.com/cnekol/blog/pull/12) 到 main。
-2. GitHub 仓库改名为 `neko.icu`，随后更新 `package.json` 的 `repository` 与 README 中的旧名字。
-3. Cloudflare 建 `neko-work` Worker 并上线 work.neko.icu（占位页）。
-4. 建 `neko-site` Worker，用 `*.workers.dev` 预览地址检查文章与旧链接跳转。
-5. 切换：Netlify `blogneko` 移除 `blog.neko.icu`，删旧 DNS 记录 → `neko-site` 挂 `neko.icu` → 加 `blog` 的代理记录和 Redirect Rule → 按 `docs/deploy.md` 验证。
-6. 邮箱：加 DMARC（先 `p=none`），Email Routing 的 catch-all 设为 Drop；需要回信时另配发信服务。
-7. 确认无误后删除 Netlify `blogneko`、Vercel `blog`，并删掉根目录的 `netlify.toml`、`vercel.json`；关闭旧的 dependabot PR。
+1. Cloudflare 建 `neko-work` Worker 并上线 work.neko.icu（占位页）。
+2. 建 `neko-site` Worker，用 `*.workers.dev` 预览地址检查文章与旧链接跳转。
+3. 切换：Netlify `blogneko` 移除 `blog.neko.icu`，删旧 DNS 记录 → `neko-site` 挂 `neko.icu` → 加 `blog` 的代理记录和 Redirect Rule → 按 `docs/deploy.md` 验证。
+4. 邮箱：加 DMARC（先 `p=none`），Email Routing 的 catch-all 设为 Drop；需要回信时另配发信服务。
+5. 确认无误后删除 Netlify `blogneko`、Vercel `blog`，并删掉根目录的 `netlify.toml`、`vercel.json`。
 
 ## 待站长
 
