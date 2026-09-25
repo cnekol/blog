@@ -19,6 +19,14 @@
 - **保留** remark-math + rehype-katex、Shiki、RSS、sitemap。
 - **同一仓库、pnpm workspace monorepo**（`apps/site`、`apps/work`、`packages/design`）。仓库已由 `blog` 改名为 `neko.icu`（2026-09-25）。
 
+## 运行环境与依赖
+
+- 2026-09-25：Node 24（当前 Active LTS），版本只在 `.node-version` 定义；pnpm 12（`packageManager` 字段）。
+- 2026-09-25：所有依赖版本集中在 `pnpm-workspace.yaml` 的 catalog，避免两个 app 各自漂移；dependabot 只扫根目录。
+- 2026-09-25：保留 pnpm 12 的供应链保护（`minimumReleaseAge`、`trustPolicy: no-downgrade`）。`chokidar@4.0.3` 因发布时缺 provenance 被判降级，单独放行。
+- 2026-09-25：TypeScript 用 6.x。7.0 是原生重写版，typescript-eslint 与 `@astrojs/check` 尚不支持，等生态跟上再升。
+- 2026-09-25：Astro 7 默认 Markdown 处理器为 Sätteri；site 需要 remark-math / rehype-katex，因此显式使用 `@astrojs/markdown-remark` 的 `unified()` 处理器。
+
 ## 内容模型
 
 - `apps/site` 的 collection：`writing`（文章）、`pages`（关于、近况等独立页）。

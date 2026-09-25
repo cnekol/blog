@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs'
+import { unified } from '@astrojs/markdown-remark'
 import sitemap from '@astrojs/sitemap'
 import { defineConfig } from 'astro/config'
 import rehypeKatex from 'rehype-katex'
@@ -14,8 +15,11 @@ export default defineConfig({
   trailingSlash: 'ignore',
   prefetch: true,
   markdown: {
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex],
+    // Astro 7 默认用 Sätteri；数学公式依赖 remark/rehype 插件，所以显式用 unified 处理器
+    processor: unified({
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex],
+    }),
     shikiConfig: {
       themes: { light: 'github-light', dark: 'github-dark' },
       wrap: true,

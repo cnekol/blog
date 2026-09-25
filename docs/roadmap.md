@@ -11,6 +11,7 @@
 - 临时 `netlify.toml` / `vercel.json` 停掉旧平台对本仓库的构建。
 - 合并 [cnekol/neko.icu#12](https://github.com/cnekol/neko.icu/pull/12)；关闭旧的 dependabot PR。
 - 2026-09-25：GitHub 仓库由 `blog` 改名为 `neko.icu`。
+- 2026-09-25：加入 CI（lint + build）；升级到 Node 24、pnpm 12、Astro 7 等最新依赖，版本统一放在 pnpm catalog；dependabot 改为根目录扫描、小版本合并提交。
 
 ## 待办
 
@@ -20,7 +21,8 @@
 2. 建 `neko-site` Worker，用 `*.workers.dev` 预览地址检查文章与旧链接跳转。
 3. 切换：Netlify `blogneko` 移除 `blog.neko.icu`，删旧 DNS 记录 → `neko-site` 挂 `neko.icu` → 加 `blog` 的代理记录和 Redirect Rule → 按 `docs/deploy.md` 验证。
 4. 邮箱：加 DMARC（先 `p=none`），Email Routing 的 catch-all 设为 Drop；需要回信时另配发信服务。
-5. 确认无误后删除 Netlify `blogneko`、Vercel `blog`，并删掉根目录的 `netlify.toml`、`vercel.json`。
+5. 在 GitHub 设置里给 `main` 加分支保护（要求 CI 通过），并开启合并后自动删除分支。
+6. 确认无误后删除 Netlify `blogneko`、Vercel `blog`，并删掉根目录的 `netlify.toml`、`vercel.json`。
 
 ## 待站长
 

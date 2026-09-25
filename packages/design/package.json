@@ -11,6 +11,6 @@
     "./sites": "./src/sites.ts"
   },
   "peerDependencies": {
-    "astro": "^6.1.7"
+    "astro": "catalog:"
   }
 }

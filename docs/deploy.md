@@ -14,7 +14,7 @@ Cloudflare 控制台 → Workers & Pages → Create → Import a repository → 
 | Non-production branch deploy command | `npx wrangler versions upload`（默认值，生成预览地址） | 同左 |
 | Deploy command | `npx wrangler deploy` | 同左 |
 | Build watch paths（include） | `apps/site/*`, `packages/design/*`, `pnpm-lock.yaml` | `apps/work/*`, `packages/design/*`, `pnpm-lock.yaml` |
-| 构建变量 | `NODE_VERSION=22`、`PNPM_VERSION=9.14.4`、`SKIP_DEPENDENCY_INSTALL=1` | 同左 |
+| 构建变量 | `NODE_VERSION=24`、`PNPM_VERSION=12.6.0`、`SKIP_DEPENDENCY_INSTALL=1` | 同左 |
 
 `SKIP_DEPENDENCY_INSTALL=1`：Root directory 下没有锁文件，自动安装可能误用 npm 而无法解析 `workspace:*`，所以关掉自动安装，改由 build command 里的 `pnpm install` 按仓库根目录的 `pnpm-lock.yaml` 安装整个 workspace。
 

@@ -11,14 +11,14 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/sitemap": "catalog:",
     "@neko/design": "workspace:*",
-    "astro": "^6.1.7",
-    "sharp": "^0.34.5"
+    "astro": "catalog:",
+    "sharp": "catalog:"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.8",
-    "typescript": "~5.8.3",
-    "wrangler": "^4.0.0"
+    "@astrojs/check": "catalog:",
+    "typescript": "catalog:",
+    "wrangler": "catalog:"
   }
 }

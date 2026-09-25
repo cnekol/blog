@@ -1,8 +1,41 @@
+minimumReleaseAgeExcludePrune: true
+
+trustPolicy: no-downgrade
+# chokidar@4.0.3（2024-12，@astrojs/check 依赖）发布时未带 provenance，被判为信任降级；仅放行这一个版本
+trustPolicyExclude:
+  - chokidar@4.0.3
+
+shellEmulator: true
+
 packages:
   - apps/*
   - packages/*
 
-onlyBuiltDependencies:
-  - esbuild
-  - sharp
-  - workerd
+# 只允许这些依赖在安装时执行构建脚本
+allowBuilds:
+  esbuild: true
+  sharp: true
+  simple-git-hooks: true
+  workerd: true
+
+# 所有依赖的版本都在这里统一管理，package.json 里写 `catalog:`
+catalog:
+  '@antfu/eslint-config': ^9.5.1
+  '@astrojs/check': ^0.9.10
+  '@astrojs/markdown-remark': ^7.3.1
+  '@astrojs/rss': ^4.0.19
+  '@astrojs/sitemap': ^3.7.4
+  astro: ^7.3.5
+  astro-eslint-parser: ^3.2.0
+  eslint: ^10.11.0
+  eslint-plugin-astro: ^3.2.1
+  eslint-plugin-format: ^2.0.1
+  katex: ^0.18.9
+  lint-staged: ^17.5.1
+  prettier-plugin-astro: ^0.14.1
+  rehype-katex: ^7.0.1
+  remark-math: ^6.0.0
+  sharp: ^0.35.4
+  simple-git-hooks: ^2.14.0
+  typescript: ~6.0.3
+  wrangler: ^4.138.0
