@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/sitemap": "^3.7.4",
     "@neko/design": "workspace:*",
     "astro": "^6.1.7",
     "katex": "^0.16.22",
