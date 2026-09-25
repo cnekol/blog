@@ -27,7 +27,9 @@ pnpm lint | pnpm lint:fix
 pnpm --filter @neko/site preview    # wrangler dev，本地模拟 Workers（含 _redirects）
 ```
 
-提交前必须 `pnpm build` 与 `pnpm lint` 都通过。
+提交前必须 `pnpm build` 与 `pnpm lint` 都通过；CI（`.github/workflows/ci.yml`）在每个 PR 上跑同样的检查，红了不合并。
+
+依赖由 dependabot 每月更新：小版本与补丁合成一个 PR，大版本单独提。合并前 CI 必须通过；大版本还要看一下更新说明。
 
 ## 规则
 
