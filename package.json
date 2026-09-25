@@ -5,6 +5,7 @@
   "packageManager": "pnpm@9.14.4",
   "repository": "https://github.com/cnekol/blog",
   "scripts": {
+    "prepare": "simple-git-hooks",
     "dev:site": "pnpm --filter @neko/site dev",
     "dev:work": "pnpm --filter @neko/work dev",
     "build": "pnpm --recursive --filter './apps/*' build",

@@ -2,8 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "./node_modules/.bin/astro dev",
-      "name": "Development server",
+      "command": "pnpm dev:site",
+      "name": "Dev: neko.icu",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "pnpm dev:work",
+      "name": "Dev: work.neko.icu",
       "request": "launch",
       "type": "node-terminal"
     }
