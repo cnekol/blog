@@ -14,7 +14,7 @@
 
 按顺序：
 
-1. 合并 [cnekol/blog#11](https://github.com/cnekol/blog/pull/11) 到 main。
+1. 合并 [cnekol/blog#12](https://github.com/cnekol/blog/pull/12) 到 main。
 2. GitHub 仓库改名为 `neko.icu`，随后更新 `package.json` 的 `repository` 与 README 中的旧名字。
 3. Cloudflare 建 `neko-work` Worker 并上线 work.neko.icu（占位页）。
 4. 建 `neko-site` Worker，用 `*.workers.dev` 预览地址检查文章与旧链接跳转。
