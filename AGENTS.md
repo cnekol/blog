@@ -59,6 +59,7 @@
 - Netlify：站点 `blogneko` 服务 `blog.neko.icu`（待下线）；另有 `pelorus-apk`（apk.neko.icu）、`home-preview`（preview.neko.icu）、
   `n3ko`、`lucent-vacherin-42f756`，与本仓库无关，**不要动**。
 - Vercel：还有一个 `blog` 项目（本仓库旧部署），计划不再用 Vercel，确认后可删除。
+- 仓库根目录的 `netlify.toml`（ignore）和 `vercel.json`（关闭 Git 部署）是临时文件，让旧平台停止构建本仓库；删除对应站点/项目后一并删除。
 - 连接器没有创建/部署 Worker、配置 Redirect Rules 的能力，这些需站长在控制台操作（或给环境加 `CLOUDFLARE_API_TOKEN` 后用 wrangler）。
 
 ## 待站长决定 / 操作

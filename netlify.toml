@@ -1,0 +1,4 @@
+# 临时：站点已迁到 Cloudflare Workers，Netlify 不再构建本仓库。
+# 删除 Netlify 上的 blogneko 站点后，本文件一并删除。
+[build]
+ignore = "exit 0"
