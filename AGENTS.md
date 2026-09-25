@@ -27,9 +27,15 @@
   - 每个 app 一个 `wrangler.jsonc`（`assets.directory: ./dist`，`custom_domain: true`）；Workers Builds 连 GitHub，
     root directory 分别为 `apps/site`、`apps/work`，watch paths 包含 `packages/design/*`。
   - `blog.neko.icu` 的跳转用 Cloudflare Redirect Rules（zone 级），不挂 Worker；DNS 记录保持 proxied。
-  - 可选：Web Analytics、Email Routing（如 `hi@neko.icu`）、R2 放作品大图/视频、联系表单用 Worker + Turnstile。
+  - 可选：Web Analytics、Email Routing（已有 `neko@neko.icu`）、R2 放作品大图/视频、联系表单用 Worker + Turnstile。
 - **迁移顺序（不断站）**：分支上完成改造 → Cloudflare 建两个 Worker 用预览地址验证 → Netlify 移除自定义域名、
   Cloudflare 挂域名与跳转规则 → 确认后删除 Netlify 站点。
+
+## 已定（2026-09-25 补充）
+
+- 旧文章全部公开，不设 `unlisted`。
+- 公开联系邮箱：`neko@neko.icu`（Cloudflare Email Routing），定义在 `packages/design/src/sites.ts`。
+- `work.neko.icu` 由 `neko-work` Worker 的 Custom Domain 接管（`apps/work/wrangler.jsonc`），与旧博客迁移互不依赖，可先上线。
 
 ## 实施记录（已完成）
 
@@ -57,11 +63,8 @@
 ## 待站长决定 / 操作
 
 - 视觉调性三个关键词（倾向：文学、东方、克制）——视觉设计由站长主导，代码先做简洁占位。
-- 旧文章逐篇确认哪些设为 `unlisted`（部分含私人情绪/政治文本摘录）。
-- 旧文章 `unlisted` 候选（默认全部公开，等站长确认）：`节自在延安文艺座谈会上的讲话`、`节自开诚忠告十八省之豪杰`、`粗看日记`（政治文本/评论），
-  `镜子前`、`买醉超标`、`写在我的25岁`（私人情绪）。在对应文章 frontmatter 加 `unlisted: true` 即可。
 - 补 `about.md`、`now.md` 正文，work 的真实案例与履历（`apps/work/src/pages/about.astro` 的 `experience`）。
-- 联系邮箱暂写 `hi@neko.icu`（`apps/work/src/lib/work.ts`），需在 Cloudflare Email Routing 配好后才可用。
+- 邮箱：在 `_dmarc` 加 DMARC 记录（先 `p=none`）；Email Routing 的 catch-all 设为 Drop；如需以 `neko@neko.icu` 回信，另配发信服务。
 - 合并本分支到 main；GitHub 仓库改名。
 - 按 `docs/deploy.md`：Cloudflare 建 `neko-site`、`neko-work` 两个 Worker 并连 GitHub → 预览地址验证 →
   Netlify `blogneko` 移除自定义域名、删旧 DNS 记录 → 挂域名、配 Redirect Rule → 确认后删除 Netlify `blogneko` 与 Vercel `blog` 项目。

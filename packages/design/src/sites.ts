@@ -12,3 +12,6 @@ export const sites = {
 
 export const author = 'Neko'
 export const twitter = '@cnekol'
+
+/** 公开联系邮箱（Cloudflare Email Routing 转发到私人邮箱） */
+export const email = 'neko@neko.icu'
