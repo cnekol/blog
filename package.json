@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "packageManager": "pnpm@12.6.0",
-  "repository": "https://github.com/cnekol/blog",
+  "repository": "https://github.com/cnekol/neko.icu",
   "scripts": {
     "prepare": "simple-git-hooks",
     "dev:site": "pnpm --filter @neko/site dev",
