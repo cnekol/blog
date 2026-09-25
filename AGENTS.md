@@ -45,7 +45,7 @@ pnpm --filter @neko/site preview    # wrangler dev，本地模拟 Workers（含 
 
 ## 协作约定
 
-- 提交、PR 标题与描述、代码注释中**不加任何 agent 署名**（不写 `Co-Authored-By`、会话链接、"Generated with …"）。
-- 提交作者与提交者统一为 `neko <conan.neko.lin@gmail.com>`。
+- 提交、PR、分支名、代码注释中**不加任何 agent 署名或痕迹**（不写 `Co-Authored-By`、会话链接、"Generated with …"）。
+- 提交作者与提交者统一为 `Neko <conan.neko.lin@gmail.com>`。
 - 提交信息用英文，Conventional Commits；PR 标题与描述用英文。
 - 文档与代码注释用中文。
