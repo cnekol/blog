@@ -35,6 +35,7 @@
 
 - 旧文章全部公开，不设 `unlisted`。
 - 公开联系邮箱：`neko@neko.icu`（Cloudflare Email Routing），定义在 `packages/design/src/sites.ts`。
+- work 暂无内容：没有公开作品时自动进入占位模式（首页只有简介、邮箱和 neko.icu 链接，隐藏导航，全站 noindex）；加入第一个非 draft 作品后自动恢复。
 - `work.neko.icu` 由 `neko-work` Worker 的 Custom Domain 接管（`apps/work/wrangler.jsonc`），与旧博客迁移互不依赖，可先上线。
 
 ## 实施记录（已完成）
@@ -48,7 +49,7 @@
 - 主题自带的示例文章（故乡、羅生門、容忍与自由、The Unbearable Lightness of Being、两篇 Example）不是 Neko 的文章，未迁移，旧链接跳到 `/writing/`。
 - 旧链接跳转分两层（与原计划不同，更简单）：zone 级 Redirect Rule 只把 `blog.neko.icu/*` 保留路径跳到 `neko.icu`；
   逐篇映射由 `apps/site/legacy-redirects.json` 在构建时生成 `dist/_redirects`，由 site Worker 处理。已用 `wrangler dev` 验证中文路径。
-- `apps/work`：作品列表、案例模板（`_template.md`，背景→问题→角色→过程→结果→反思）、履历/联系页；目前只有 draft 占位，线上显示“作品整理中”。
+- `apps/work`：作品列表、案例模板（`_template.md`，背景→问题→角色→过程→结果→反思）、履历/联系页；目前无作品，处于占位模式。
 - `packages/design`：`tokens.css`、`base.css`、`BaseLayout.astro`（含 View Transitions）、`Seo.astro`、`sites.ts`。
 - 部署与 Redirect Rules 操作步骤见 `docs/deploy.md`。
 
