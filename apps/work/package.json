@@ -11,7 +11,7 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/sitemap": "^3.7.4",
     "@neko/design": "workspace:*",
     "astro": "^6.1.7",
     "sharp": "^0.34.5"
