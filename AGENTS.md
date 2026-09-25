@@ -29,6 +29,9 @@ pnpm --filter @neko/site preview    # wrangler dev，本地模拟 Workers（含 
 
 提交前必须 `pnpm build` 与 `pnpm lint` 都通过；CI（`.github/workflows/ci.yml`）在每个 PR 上跑同样的检查，红了不合并。
 
+依赖版本全部写在 `pnpm-workspace.yaml` 的 `catalog` 里，`package.json` 只写 `catalog:`（lint 会检查）。
+pnpm 开启了供应链保护：发布不足一天的版本不装，发布方式降级的版本拒装；不要为了装包而关掉这些设置，确需例外时只放行具体版本并写明原因。
+
 依赖由 dependabot 每月更新：小版本与补丁合成一个 PR，大版本单独提。合并前 CI 必须通过；大版本还要看一下更新说明。
 
 ## 规则

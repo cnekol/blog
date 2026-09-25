@@ -11,18 +11,19 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/markdown-remark": "catalog:",
+    "@astrojs/rss": "catalog:",
+    "@astrojs/sitemap": "catalog:",
     "@neko/design": "workspace:*",
-    "astro": "^6.1.7",
-    "katex": "^0.16.22",
-    "rehype-katex": "^7.0.1",
-    "remark-math": "^6.0.0",
-    "sharp": "^0.34.5"
+    "astro": "catalog:",
+    "katex": "catalog:",
+    "rehype-katex": "catalog:",
+    "remark-math": "catalog:",
+    "sharp": "catalog:"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.8",
-    "typescript": "~5.8.3",
-    "wrangler": "^4.0.0"
+    "@astrojs/check": "catalog:",
+    "typescript": "catalog:",
+    "wrangler": "catalog:"
   }
 }
