@@ -26,6 +26,12 @@ Cloudflare 控制台 → Workers & Pages → Create → Import a repository → 
 > 注意：在旧记录删掉之前，生产分支的首次部署会因域名冲突失败；可以先在 `wrangler.jsonc` 注释掉 `routes`
 > 只用 workers.dev 地址验证，切换时再恢复。
 
+### work.neko.icu
+
+`apps/work/wrangler.jsonc` 的 `routes` 为 `work.neko.icu`（`custom_domain: true`）。`neko-work` 首次部署到生产分支时，
+Cloudflare 自动在 DNS 里建一条指向该 Worker 的只读代理记录并签发证书，不用手动加 DNS。
+前提是 DNS 里没有已存在的 `work` 记录（有的话先删）。它不依赖 Netlify 下线，可以先于 neko.icu 上线。
+
 ## 3. 旧博客跳转（blog.neko.icu）
 
 分两层：
@@ -52,7 +58,17 @@ curl -sI https://neko.icu/posts/2015/传承/传承/        # 301 → /writing/�
 curl -sIL https://blog.neko.icu/atom.xml               # 最终到 https://neko.icu/rss.xml
 ```
 
-## 4. 下线 Netlify
+## 4. 邮箱（neko@neko.icu，Cloudflare Email Routing）
+
+- 路由：`neko@neko.icu` → 已验证的私人邮箱；Catch-all 设为 **Drop**，避免被随机地址轰炸。
+- DNS：Email Routing 已自动加 MX、SPF（`v=spf1 include:_spf.mx.cloudflare.net ~all`）和 DKIM。
+  另加 DMARC：`TXT _dmarc  "v=DMARC1; p=none; rua=mailto:neko@neko.icu"`，确认一切正常后改为 `p=quarantine`。
+  根域名只能有一条 `v=spf1` 记录，接入其他发信服务时合并 `include:`。
+- 回信：Email Routing 只收不发。要以 `neko@neko.icu` 身份回信，需要一个提供 SMTP 的发信服务
+  （Gmail「以其他地址发送邮件」要填 SMTP），并把它的 SPF/DKIM 加到 DNS。
+- 公开地址：页面上直接写 `mailto:`；如果垃圾邮件多，再加 Worker + Turnstile 的联系表单，或另开一个可随时停用的别名。
+
+## 5. 下线 Netlify
 
 确认两站与跳转都正常后，删除 Netlify 站点。
 
