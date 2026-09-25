@@ -31,17 +31,37 @@
 - **迁移顺序（不断站）**：分支上完成改造 → Cloudflare 建两个 Worker 用预览地址验证 → Netlify 移除自定义域名、
   Cloudflare 挂域名与跳转规则 → 确认后删除 Netlify 站点。
 
-## 待办（按顺序）
+## 实施记录（已完成）
 
-1. 改造为 pnpm workspace，删除旧主题遗留（`scripts/update-theme.ts`、`theme:*` 脚本、主题 CHANGELOG/README、UnoCSS、swup、`.vercel` 相关）。
-2. `apps/site`：迁移全部文章与图片，加 `slug`/`unlisted`，中文排版基础样式（行宽约 35–45 字、`text-autospace` 等）。
-3. `apps/work`：最小骨架（作品列表、案例详情模板：背景→问题→角色→过程→结果→反思；关于/联系）。
-4. `packages/design`：tokens、Base 布局、SEO 组件。
-5. 两个 `wrangler.jsonc`；文档化 Redirect Rules 配置。
+代码改造（原待办 1–5）已在分支 `claude/awesome-albattani-4wkrf1` 完成，`pnpm build` 与 `pnpm lint` 通过：
+
+- 根目录为 pnpm workspace；旧主题、UnoCSS、swup、`.vercel`、主题脚本与示例文章已删除。
+- `apps/site`：24 篇文章迁到 `src/content/writing/`（目录结构保留，URL 只看 `slug`）；
+  slug 沿用旧 id 的最后一段（如 `/posts/2015/传承/传承` → `/writing/传承/`）。
+  `pages` collection 有 `about`、`now`（内容待站长补）。
+- 主题自带的示例文章（故乡、羅生門、容忍与自由、The Unbearable Lightness of Being、两篇 Example）不是 Neko 的文章，未迁移，旧链接跳到 `/writing/`。
+- 旧链接跳转分两层（与原计划不同，更简单）：zone 级 Redirect Rule 只把 `blog.neko.icu/*` 保留路径跳到 `neko.icu`；
+  逐篇映射由 `apps/site/legacy-redirects.json` 在构建时生成 `dist/_redirects`，由 site Worker 处理。已用 `wrangler dev` 验证中文路径。
+- `apps/work`：作品列表、案例模板（`_template.md`，背景→问题→角色→过程→结果→反思）、履历/联系页；目前只有 draft 占位，线上显示“作品整理中”。
+- `packages/design`：`tokens.css`、`base.css`、`BaseLayout.astro`（含 View Transitions）、`Seo.astro`、`sites.ts`。
+- 部署与 Redirect Rules 操作步骤见 `docs/deploy.md`。
+
+## 现状（2026-09-25 通过 Cloudflare / Netlify / Vercel 连接器只读查看）
+
+- Cloudflare：账户下还没有任何 Worker。
+- Netlify：站点 `blogneko` 服务 `blog.neko.icu`（待下线）；另有 `pelorus-apk`（apk.neko.icu）、`home-preview`（preview.neko.icu）、
+  `n3ko`、`lucent-vacherin-42f756`，与本仓库无关，**不要动**。
+- Vercel：还有一个 `blog` 项目（本仓库旧部署），计划不再用 Vercel，确认后可删除。
+- 连接器没有创建/部署 Worker、配置 Redirect Rules 的能力，这些需站长在控制台操作（或给环境加 `CLOUDFLARE_API_TOKEN` 后用 wrangler）。
 
 ## 待站长决定 / 操作
 
 - 视觉调性三个关键词（倾向：文学、东方、克制）——视觉设计由站长主导，代码先做简洁占位。
 - 旧文章逐篇确认哪些设为 `unlisted`（部分含私人情绪/政治文本摘录）。
-- GitHub 仓库改名；Cloudflare 建 Worker、挂域名、配置 Redirect Rules；下线 Netlify。
-- 如需让 Claude 查看 Cloudflare 现状：在环境设置中添加只读的 `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID`。
+- 旧文章 `unlisted` 候选（默认全部公开，等站长确认）：`节自在延安文艺座谈会上的讲话`、`节自开诚忠告十八省之豪杰`、`粗看日记`（政治文本/评论），
+  `镜子前`、`买醉超标`、`写在我的25岁`（私人情绪）。在对应文章 frontmatter 加 `unlisted: true` 即可。
+- 补 `about.md`、`now.md` 正文，work 的真实案例与履历（`apps/work/src/pages/about.astro` 的 `experience`）。
+- 联系邮箱暂写 `hi@neko.icu`（`apps/work/src/lib/work.ts`），需在 Cloudflare Email Routing 配好后才可用。
+- 合并本分支到 main；GitHub 仓库改名。
+- 按 `docs/deploy.md`：Cloudflare 建 `neko-site`、`neko-work` 两个 Worker 并连 GitHub → 预览地址验证 →
+  Netlify `blogneko` 移除自定义域名、删旧 DNS 记录 → 挂域名、配 Redirect Rule → 确认后删除 Netlify `blogneko` 与 Vercel `blog` 项目。

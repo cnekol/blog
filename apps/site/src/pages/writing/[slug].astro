@@ -1,0 +1,57 @@
+---
+import type { GetStaticPaths } from 'astro'
+import type { Writing } from '~/lib/writing'
+import { render } from 'astro:content'
+import SiteLayout from '~/layouts/SiteLayout.astro'
+import { formatDate, getAllWriting, isoDate } from '~/lib/writing'
+import 'katex/dist/katex.min.css'
+
+export const getStaticPaths = (async () => {
+  const entries = await getAllWriting()
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }))
+}) satisfies GetStaticPaths
+
+interface Props {
+  entry: Writing
+}
+
+const { entry } = Astro.props
+const { Content } = await render(entry)
+const { title, description, pubDate, modDate, unlisted, cover } = entry.data
+---
+
+<SiteLayout
+  title={title}
+  description={description}
+  type="article"
+  noindex={unlisted}
+  publishedTime={pubDate}
+  image={cover?.src}
+>
+  <article>
+    <h1 class="page-title">{title}</h1>
+    <p class="page-meta">
+      <time datetime={isoDate(pubDate)}>{formatDate(pubDate)}</time>
+      {
+        modDate && (
+          <span>
+            {' '}
+            · 修改于 <time datetime={isoDate(modDate)}>{formatDate(modDate)}</time>
+          </span>
+        )
+      }
+    </p>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+  <p class="back"><a href="/writing/">← 全部文章</a></p>
+</SiteLayout>
+
+<style>
+  .back {
+    margin-top: var(--space-16);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+  }
+</style>

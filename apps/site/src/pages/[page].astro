@@ -1,0 +1,25 @@
+---
+import type { GetStaticPaths } from 'astro'
+import type { CollectionEntry } from 'astro:content'
+import { getCollection, render } from 'astro:content'
+import SiteLayout from '~/layouts/SiteLayout.astro'
+
+export const getStaticPaths = (async () => {
+  const pages = await getCollection('pages')
+  return pages.map((entry) => ({ params: { page: entry.id }, props: { entry } }))
+}) satisfies GetStaticPaths
+
+interface Props {
+  entry: CollectionEntry<'pages'>
+}
+
+const { entry } = Astro.props
+const { Content } = await render(entry)
+---
+
+<SiteLayout title={entry.data.title} description={entry.data.description}>
+  <h1 class="page-title">{entry.data.title}</h1>
+  <div class="prose">
+    <Content />
+  </div>
+</SiteLayout>
