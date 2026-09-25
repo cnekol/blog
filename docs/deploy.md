@@ -11,9 +11,12 @@ Cloudflare 控制台 → Workers & Pages → Create → Import a repository → 
 | Worker 名称（须与 `wrangler.jsonc` 的 `name` 一致） | `neko-site` | `neko-work` |
 | Root directory | `apps/site` | `apps/work` |
 | Build command | `pnpm install --frozen-lockfile && pnpm build` | 同左 |
+| Non-production branch deploy command | `npx wrangler versions upload`（默认值，生成预览地址） | 同左 |
 | Deploy command | `npx wrangler deploy` | 同左 |
 | Build watch paths（include） | `apps/site/*`, `packages/design/*`, `pnpm-lock.yaml` | `apps/work/*`, `packages/design/*`, `pnpm-lock.yaml` |
-| 构建环境变量 | `NODE_VERSION=22` | 同左 |
+| 构建变量 | `NODE_VERSION=22`、`PNPM_VERSION=9.14.4`、`SKIP_DEPENDENCY_INSTALL=1` | 同左 |
+
+`SKIP_DEPENDENCY_INSTALL=1`：Root directory 下没有锁文件，自动安装可能误用 npm 而无法解析 `workspace:*`，所以关掉自动安装，改由 build command 里的 `pnpm install` 按仓库根目录的 `pnpm-lock.yaml` 安装整个 workspace。
 
 非生产分支的构建会生成预览地址（`*.workers.dev`），切换域名前先在预览地址上验证。
 
