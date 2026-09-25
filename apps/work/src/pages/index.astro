@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets'
+import WorkLayout from '~/layouts/WorkLayout.astro'
+import { getProjects } from '~/lib/work'
+
+const projects = await getProjects()
+---
+
+<WorkLayout title="Neko · 设计" description="Neko 的设计作品与案例">
+  <p class="lede">我是 Neko，产品设计师。这里是我做过的一些项目。</p>
+  {
+    projects.length === 0 ? (
+      <p>作品整理中。</p>
+    ) : (
+      <ul class="grid">
+        {projects.map((project) => (
+          <li class="card">
+            <a href={`/projects/${project.id}/`}>
+              <div class="card-media">
+                {project.data.cover && (
+                  <Image src={project.data.cover} alt="" widths={[480, 960]} sizes="(min-width: 60rem) 30vw, 100vw" />
+                )}
+              </div>
+              <h2>{project.data.title}</h2>
+              <p>{project.data.summary}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</WorkLayout>

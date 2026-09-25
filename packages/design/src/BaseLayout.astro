@@ -1,0 +1,31 @@
+---
+import type { Props as SeoProps } from './Seo.astro'
+import { ClientRouter } from 'astro:transitions'
+import Seo from './Seo.astro'
+import './tokens.css'
+import './base.css'
+
+export type Props = SeoProps & {
+  /** 写在 <body> 上的 class，用来区分两站版式 */
+  bodyClass?: string
+}
+
+const { bodyClass, ...seo } = Astro.props
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <Seo {...seo} />
+    <ClientRouter />
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <a class="visually-hidden" href="#main">跳到正文</a>
+    <slot />
+  </body>
+</html>

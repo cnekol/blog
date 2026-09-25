@@ -1,0 +1,26 @@
+---
+import SiteLayout from '~/layouts/SiteLayout.astro'
+import { formatDate, getListedWriting, isoDate, writingUrl } from '~/lib/writing'
+
+const entries = await getListedWriting()
+const years = Map.groupBy(entries, (entry) => entry.data.pubDate.getFullYear())
+---
+
+<SiteLayout title="写作" description="Neko 的文章">
+  <h1 class="page-title">写作</h1>
+  {
+    [...years].map(([year, list]) => (
+      <section class="year-group">
+        <h2>{year}</h2>
+        <ul class="entry-list">
+          {list.map((entry) => (
+            <li>
+              <a href={writingUrl(entry)}>{entry.data.title}</a>
+              <time datetime={isoDate(entry.data.pubDate)}>{formatDate(entry.data.pubDate)}</time>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</SiteLayout>

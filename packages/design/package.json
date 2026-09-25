@@ -1,0 +1,16 @@
+{
+  "name": "@neko/design",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./tokens.css": "./src/tokens.css",
+    "./base.css": "./src/base.css",
+    "./BaseLayout.astro": "./src/BaseLayout.astro",
+    "./Seo.astro": "./src/Seo.astro",
+    "./sites": "./src/sites.ts"
+  },
+  "peerDependencies": {
+    "astro": "^6.1.7"
+  }
+}

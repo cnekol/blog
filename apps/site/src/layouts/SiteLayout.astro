@@ -1,0 +1,35 @@
+---
+import type { Props as BaseProps } from '@neko/design/BaseLayout.astro'
+import BaseLayout from '@neko/design/BaseLayout.astro'
+import { sites } from '@neko/design/sites'
+import { nav, siteName } from '~/lib/site'
+import '~/styles/site.css'
+
+type Props = Omit<BaseProps, 'siteName' | 'feed'>
+
+const path = Astro.url.pathname
+---
+
+<BaseLayout {...Astro.props} siteName={siteName} feed="/rss.xml" bodyClass="site">
+  <slot name="head" slot="head" />
+  <header class="site-header">
+    <a class="site-title" href="/">{siteName}</a>
+    <nav aria-label="主导航">
+      {
+        nav.map((item) => (
+          <a href={item.href} aria-current={path.startsWith(item.href) ? 'page' : undefined}>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </header>
+  <main id="main" class="site-main">
+    <slot />
+  </main>
+  <footer class="site-footer">
+    <span>© {new Date().getFullYear()} Neko</span>
+    <a href="/rss.xml">RSS</a>
+    <a href={sites.work.url}>设计作品 →</a>
+  </footer>
+</BaseLayout>

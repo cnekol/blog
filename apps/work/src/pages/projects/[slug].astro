@@ -1,0 +1,56 @@
+---
+import type { GetStaticPaths } from 'astro'
+import type { Project } from '~/lib/work'
+import { Image } from 'astro:assets'
+import { render } from 'astro:content'
+import WorkLayout from '~/layouts/WorkLayout.astro'
+import { getProjects } from '~/lib/work'
+
+export const getStaticPaths = (async () => {
+  const projects = await getProjects()
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }))
+}) satisfies GetStaticPaths
+
+interface Props {
+  project: Project
+}
+
+const { project } = Astro.props
+const { Content } = await render(project)
+const { title, summary, year, role, client, tags, cover } = project.data
+---
+
+<WorkLayout title={title} description={summary} type="article" image={cover?.src}>
+  <article>
+    <h1 class="page-title">{title}</h1>
+    <p class="lede">{summary}</p>
+    <dl class="meta-list">
+      <div><dt>年份</dt><dd>{year}</dd></div>
+      <div><dt>角色</dt><dd>{role}</dd></div>
+      {
+        client && (
+          <div>
+            <>
+              <dt>客户 / 团队</dt>
+              <dd>{client}</dd>
+            </>
+          </div>
+        )
+      }
+      {
+        tags.length > 0 && (
+          <div>
+            <>
+              <dt>领域</dt>
+              <dd>{tags.join(' · ')}</dd>
+            </>
+          </div>
+        )
+      }
+    </dl>
+    {cover && <Image src={cover} alt="" widths={[960, 1920]} sizes="100vw" />}
+    <div class="case">
+      <Content />
+    </div>
+  </article>
+</WorkLayout>
