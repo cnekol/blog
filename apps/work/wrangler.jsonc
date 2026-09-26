@@ -12,5 +12,7 @@
     { "pattern": "work.neko.icu", "custom_domain": true }
   ],
   "workers_dev": true,
-  "preview_urls": true
+  "preview_urls": true,
+  // Worker Previews（非 main 分支的预览构建）要求有这个块；纯静态站没有变量和绑定，留空
+  "previews": {}
 }

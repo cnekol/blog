@@ -20,7 +20,7 @@ Cloudflare 控制台 → Workers & Pages → Create → Import a repository → 
 
 创建后到 Settings → Build → Branch control：生产分支选 `main`，勾选 **Enable Preview Builds**。
 之后非 `main` 分支的推送会跑 Preview command，生成预览地址（`*.workers.dev`），PR 里也会有预览链接；切换域名前先在预览地址上验证。
-预览不继承生产环境的变量与绑定；两站是纯静态资源，没有需要配置的。
+Worker Previews 要求 `wrangler.jsonc` 有 `previews` 块；预览不继承生产环境的变量与绑定，两站是纯静态资源，所以留空（`"previews": {}`）。
 
 ## 2. 挂域名
 
