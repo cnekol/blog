@@ -28,8 +28,8 @@ Worker Previews 要求 `wrangler.jsonc` 有 `previews` 块；预览不继承生�
 挂域名前需先在 Netlify 移除 `neko.icu` / `blog.neko.icu` 的自定义域名，并删掉 DNS 里指向 Netlify 的旧记录
 （Custom Domain 不能覆盖已有的同名 CNAME/A 记录）。
 
-> 注意：在旧记录删掉之前，生产分支的首次部署会因域名冲突失败；可以先在 `wrangler.jsonc` 注释掉 `routes`
-> 只用 workers.dev 地址验证，切换时再恢复。
+> 现状：`apps/site/wrangler.jsonc` 的 `routes` 暂时注释掉了（旧记录还在，挂域名会冲突导致部署失败），
+> `neko-site` 目前只部署到 workers.dev。切换时：删掉旧 DNS 记录后，取消注释 `routes` 并合并到 `main`。
 
 ### work.neko.icu
 

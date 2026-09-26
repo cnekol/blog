@@ -8,9 +8,11 @@
     "not_found_handling": "404-page",
     "html_handling": "auto-trailing-slash"
   },
-  "routes": [
-    { "pattern": "neko.icu", "custom_domain": true }
-  ],
+  // 切换前 neko.icu 仍指向 Netlify，挂 Custom Domain 会冲突导致部署失败，先只用 workers.dev。
+  // 切换时（见 docs/deploy.md）恢复下面的 routes。
+  // "routes": [
+  //   { "pattern": "neko.icu", "custom_domain": true }
+  // ],
   "workers_dev": true,
   "preview_urls": true,
   // Worker Previews（非 main 分支的预览构建）要求有这个块；纯静态站没有变量和绑定，留空
