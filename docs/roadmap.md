@@ -20,7 +20,7 @@
 
 1. Cloudflare 建 `neko-work` Worker 并上线 work.neko.icu（占位页）。
 2. 建 `neko-site` Worker，用 `*.workers.dev` 预览地址检查文章与旧链接跳转。
-3. 切换：Netlify `blogneko` 移除 `blog.neko.icu`，删旧 DNS 记录 → `neko-site` 挂 `neko.icu` → 加 `blog` 的代理记录和 Redirect Rule → 按 `docs/deploy.md` 验证。
+3. 切换：Netlify `blogneko` 移除 `blog.neko.icu`，删旧 DNS 记录 → 取消注释 `apps/site/wrangler.jsonc` 的 `routes`，让 `neko-site` 挂 `neko.icu` → 加 `blog` 的代理记录和 Redirect Rule → 按 `docs/deploy.md` 验证。
 4. 邮箱：加 DMARC（先 `p=none`），Email Routing 的 catch-all 设为 Drop；需要回信时另配发信服务。
 5. 确认无误后删除 Netlify `blogneko`、Vercel `blog`，并删掉根目录的 `netlify.toml`、`vercel.json`。
 
