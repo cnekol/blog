@@ -20,8 +20,6 @@
 按顺序：
 
 1. 在 `https://neko-site.n3ko.workers.dev` 检查文章与旧链接跳转；确认 work.neko.icu 占位页正常。
-   已知问题：`neko-work` 的预览构建（非 `main` 分支）在 2026-09-26 连续失败（`861a7f1` 等），生产部署正常；
-   原因未查明，需要控制台里的构建日志。可先对 `neko-work` 断开再重连 Git（设置照 `docs/deploy.md` 填回）。
 2. 切换：Netlify `blogneko` 移除 `blog.neko.icu`，删旧 DNS 记录 → 取消注释 `apps/site/wrangler.jsonc` 的 `routes`，让 `neko-site` 挂 `neko.icu` → 加 `blog` 的代理记录和 Redirect Rule → 按 `docs/deploy.md` 验证。
 3. 邮箱：加 DMARC（先 `p=none`），Email Routing 的 catch-all 设为 Drop；需要回信时另配发信服务。
 4. 确认无误后删除 Netlify `blogneko`、Vercel `blog`，并删掉根目录的 `netlify.toml`、`vercel.json`。
