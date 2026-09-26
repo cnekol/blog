@@ -16,6 +16,12 @@ Cloudflare 控制台 → Workers & Pages → Create → Import a repository → 
 | Build watch paths（include） | `apps/site/*`, `packages/design/*`, `pnpm-lock.yaml` | `apps/work/*`, `packages/design/*`, `pnpm-lock.yaml` |
 | 构建变量 | `NODE_VERSION=24`、`PNPM_VERSION=12.6.0`、`SKIP_DEPENDENCY_INSTALL=1` | 同左 |
 
+API token（构建令牌）：两个 Worker 共用一个 `Workers Builds · cnekol/neko.icu`。
+Workers Builds 目前只支持个人账号下的 token，无法限定到单个 Worker，分开建不增加隔离。
+这个 token 要在 Worker 的 Settings → Build → API token 里用 **Create new token** 生成：在 My Profile 手动建的 token 不会出现在下拉框里，在 My Profile 改名也不会同步到下拉框。
+生成后到 My Profile → API Tokens 收紧权限：去掉 Workers KV Storage 与 Workers R2 Storage，Workers Routes 只给 `neko.icu`。
+轮换或删除它会同时影响两个 Worker 的构建。
+
 `SKIP_DEPENDENCY_INSTALL=1`：Root directory 下没有锁文件，自动安装可能误用 npm 而无法解析 `workspace:*`，所以关掉自动安装，改由 build command 里的 `pnpm install` 按仓库根目录的 `pnpm-lock.yaml` 安装整个 workspace。
 
 创建后到 Settings → Build → Branch control：生产分支选 `main`，勾选 **Enable Preview Builds**。
