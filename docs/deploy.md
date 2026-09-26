@@ -11,14 +11,16 @@ Cloudflare 控制台 → Workers & Pages → Create → Import a repository → 
 | Worker 名称（须与 `wrangler.jsonc` 的 `name` 一致） | `neko-site` | `neko-work` |
 | Root directory | `apps/site` | `apps/work` |
 | Build command | `pnpm install --frozen-lockfile && pnpm build` | 同左 |
-| Non-production branch deploy command | `npx wrangler versions upload`（默认值，生成预览地址） | 同左 |
+| Preview command | `npx wrangler preview`（默认值） | 同左 |
 | Deploy command | `npx wrangler deploy` | 同左 |
 | Build watch paths（include） | `apps/site/*`, `packages/design/*`, `pnpm-lock.yaml` | `apps/work/*`, `packages/design/*`, `pnpm-lock.yaml` |
 | 构建变量 | `NODE_VERSION=24`、`PNPM_VERSION=12.6.0`、`SKIP_DEPENDENCY_INSTALL=1` | 同左 |
 
 `SKIP_DEPENDENCY_INSTALL=1`：Root directory 下没有锁文件，自动安装可能误用 npm 而无法解析 `workspace:*`，所以关掉自动安装，改由 build command 里的 `pnpm install` 按仓库根目录的 `pnpm-lock.yaml` 安装整个 workspace。
 
-非生产分支的构建会生成预览地址（`*.workers.dev`），切换域名前先在预览地址上验证。
+创建后到 Settings → Build → Branch control：生产分支选 `main`，勾选 **Enable Preview Builds**。
+之后非 `main` 分支的推送会跑 Preview command，生成预览地址（`*.workers.dev`），PR 里也会有预览链接；切换域名前先在预览地址上验证。
+预览不继承生产环境的变量与绑定；两站是纯静态资源，没有需要配置的。
 
 ## 2. 挂域名
 
