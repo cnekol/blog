@@ -30,8 +30,8 @@
 - `apps/site/src/content/pages/` 的 `about.md`、`now.md` 正文。
 - work 的真实案例与履历（`apps/work/src/pages/about.astro` 的 `experience`）。
 
-## 各平台现状（2026-09-25，经连接器只读查看）
+## 各平台现状（2026-09-26，经连接器只读查看）
 
-- **Cloudflare**：已有 `neko-site`、`neko-work` 两个 Worker（2026-09-26）。连接器不能建 Worker、读写构建设置与日志、改 DNS 或配 Redirect Rules；需在控制台操作，或给环境加 `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID` 后用 wrangler。
+- **Cloudflare**：已有 `neko-site`、`neko-work` 两个 Worker（2026-09-26）。连接器不能建 Worker、读写构建设置与日志、改 DNS 或配 Redirect Rules；需在控制台操作，或给环境加 `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID` 后用 wrangler。云端开发环境的网络目前访问不到 `api.cloudflare.com`、`*.workers.dev` 与 `work.neko.icu`，线上效果需站长在浏览器确认。
 - **Netlify**：`blogneko` 服务 `blog.neko.icu`，待下线。`pelorus-apk`（apk.neko.icu）、`home-preview`（preview.neko.icu）、`n3ko`、`lucent-vacherin-42f756` 与本仓库无关，不要动。
 - **Vercel**：`blog` 项目为本仓库旧部署，已关闭 Git 部署，待删除。
