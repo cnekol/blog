@@ -13,16 +13,16 @@
 - 2026-09-25：GitHub 仓库由 `blog` 改名为 `neko.icu`。
 - 2026-09-25：加入 CI（lint + build）；升级到 Node 24、pnpm 12、Astro 7 等最新依赖，版本统一放在 pnpm catalog；dependabot 改为根目录扫描、小版本合并提交。
 - 2026-09-25：`main` 启用规则集（必须走 PR、CI「Lint and build」通过才能合并、禁止强推与删除）；合并后自动删除分支。
+- 2026-09-26：Cloudflare 建好 `neko-work`、`neko-site` 两个 Worker（Workers Builds 连 GitHub，开启 Preview Builds，共用一个构建 token）；`neko-work` 挂 work.neko.icu，`neko-site` 切换前只部署到 workers.dev。
 
 ## 待办
 
 按顺序：
 
-1. Cloudflare 建 `neko-work` Worker 并上线 work.neko.icu（占位页）。
-2. 建 `neko-site` Worker，用 `*.workers.dev` 预览地址检查文章与旧链接跳转。
-3. 切换：Netlify `blogneko` 移除 `blog.neko.icu`，删旧 DNS 记录 → 取消注释 `apps/site/wrangler.jsonc` 的 `routes`，让 `neko-site` 挂 `neko.icu` → 加 `blog` 的代理记录和 Redirect Rule → 按 `docs/deploy.md` 验证。
-4. 邮箱：加 DMARC（先 `p=none`），Email Routing 的 catch-all 设为 Drop；需要回信时另配发信服务。
-5. 确认无误后删除 Netlify `blogneko`、Vercel `blog`，并删掉根目录的 `netlify.toml`、`vercel.json`。
+1. 在 `https://neko-site.n3ko.workers.dev` 检查文章与旧链接跳转；确认 work.neko.icu 占位页正常。
+2. 切换：Netlify `blogneko` 移除 `blog.neko.icu`，删旧 DNS 记录 → 取消注释 `apps/site/wrangler.jsonc` 的 `routes`，让 `neko-site` 挂 `neko.icu` → 加 `blog` 的代理记录和 Redirect Rule → 按 `docs/deploy.md` 验证。
+3. 邮箱：加 DMARC（先 `p=none`），Email Routing 的 catch-all 设为 Drop；需要回信时另配发信服务。
+4. 确认无误后删除 Netlify `blogneko`、Vercel `blog`，并删掉根目录的 `netlify.toml`、`vercel.json`。
 
 ## 待站长
 
@@ -32,6 +32,6 @@
 
 ## 各平台现状（2026-09-25，经连接器只读查看）
 
-- **Cloudflare**：账户下还没有 Worker。连接器不能建 Worker、改 DNS 或配 Redirect Rules；需在控制台操作，或给环境加 `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID` 后用 wrangler。
+- **Cloudflare**：已有 `neko-site`、`neko-work` 两个 Worker（2026-09-26）。连接器不能建 Worker、读写构建设置与日志、改 DNS 或配 Redirect Rules；需在控制台操作，或给环境加 `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID` 后用 wrangler。
 - **Netlify**：`blogneko` 服务 `blog.neko.icu`，待下线。`pelorus-apk`（apk.neko.icu）、`home-preview`（preview.neko.icu）、`n3ko`、`lucent-vacherin-42f756` 与本仓库无关，不要动。
 - **Vercel**：`blog` 项目为本仓库旧部署，已关闭 Git 部署，待删除。
