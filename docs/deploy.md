@@ -16,11 +16,21 @@ Cloudflare 控制台 → Workers & Pages → Create → Import a repository → 
 | Build watch paths（include） | `apps/site/*`, `packages/design/*`, `pnpm-lock.yaml` | `apps/work/*`, `packages/design/*`, `pnpm-lock.yaml` |
 | 构建变量 | `NODE_VERSION=24`、`PNPM_VERSION=12.6.0`、`SKIP_DEPENDENCY_INSTALL=1` | 同左 |
 
-API token（构建令牌）：两个 Worker 共用一个 `Workers Builds · cnekol/neko.icu`。
+API token（构建令牌）：两个 Worker 共用一个 `Workers Builds · cnekol/neko.icu · 2026-09`。
 Workers Builds 目前只支持个人账号下的 token，无法限定到单个 Worker，分开建不增加隔离。
-这个 token 要在 Worker 的 Settings → Build → API token 里用 **Create new token** 生成：在 My Profile 手动建的 token 不会出现在下拉框里，在 My Profile 改名也不会同步到下拉框。
-生成后到 My Profile → API Tokens 收紧权限：去掉 Workers KV Storage 与 Workers R2 Storage，Workers Routes 只给 `neko.icu`。
-轮换或删除它会同时影响两个 Worker 的构建。
+
+- 下拉框里列的是 Workers Builds 的“构建令牌登记”（UUID + 名字 + 指向的 API token），不是 My Profile 里的全部 token。
+  新 token 必须在 Settings → Build → API token 里用 **Create new token** 生成；在 My Profile 手动建的不会出现，改名也不会同步。
+- 名字不唯一。在 My Profile 删除或 Roll 了对应的 API token 后，登记仍以原名留在下拉框里，选中后构建报
+  `The build token selected for this build has been deleted or rolled`。所以新建时名字带上日期，避免与失效登记同名。
+- 生产构建与预览构建各有一个 API token 设置，换 token 时两处都要改；Deploy Hook 只走生产，成功不代表预览也正常。
+- 调整权限只用 **Edit**，不要 **Roll**；Roll 会换掉 token 值，两个 Worker 的构建都会失败。
+- 需要换 token 时：在一个 Worker 里 Create new token（新名字）→ 另一个 Worker 改选它（生产、预览两处都改）→ 两边各触发一次构建确认 → 再删旧 token。
+- 可选加固：去掉 Workers KV Storage 与 Workers R2 Storage（两站用不到；构建会运行第三方依赖，token 泄露时不波及账户里其他数据），
+  Workers Routes 只给 `neko.icu`。改完触发一次构建确认。
+
+断开再重连 Git 后，旧构建不能 Retry。手动触发构建用 Settings → Build → Deploy Hooks 建一个指向 `main` 的 hook，
+`curl -X POST "<hook URL>"`；URL 本身就是凭证，不要公开或提交进仓库，用完可删。
 
 `SKIP_DEPENDENCY_INSTALL=1`：Root directory 下没有锁文件，自动安装可能误用 npm 而无法解析 `workspace:*`，所以关掉自动安装，改由 build command 里的 `pnpm install` 按仓库根目录的 `pnpm-lock.yaml` 安装整个 workspace。
 
