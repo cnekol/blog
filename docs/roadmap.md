@@ -20,6 +20,8 @@
 按顺序：
 
 1. 在 `https://neko-site.n3ko.workers.dev` 检查文章与旧链接跳转；确认 work.neko.icu 占位页正常。
+   已知问题：`neko-work` 的预览构建（非 `main` 分支）在 2026-09-26 连续失败（`861a7f1` 等），生产部署正常；
+   原因未查明，需要控制台里的构建日志。可先对 `neko-work` 断开再重连 Git（设置照 `docs/deploy.md` 填回）。
 2. 切换：Netlify `blogneko` 移除 `blog.neko.icu`，删旧 DNS 记录 → 取消注释 `apps/site/wrangler.jsonc` 的 `routes`，让 `neko-site` 挂 `neko.icu` → 加 `blog` 的代理记录和 Redirect Rule → 按 `docs/deploy.md` 验证。
 3. 邮箱：加 DMARC（先 `p=none`），Email Routing 的 catch-all 设为 Drop；需要回信时另配发信服务。
 4. 确认无误后删除 Netlify `blogneko`、Vercel `blog`，并删掉根目录的 `netlify.toml`、`vercel.json`。
@@ -30,8 +32,8 @@
 - `apps/site/src/content/pages/` 的 `about.md`、`now.md` 正文。
 - work 的真实案例与履历（`apps/work/src/pages/about.astro` 的 `experience`）。
 
-## 各平台现状（2026-09-25，经连接器只读查看）
+## 各平台现状（2026-09-26，经连接器只读查看）
 
-- **Cloudflare**：已有 `neko-site`、`neko-work` 两个 Worker（2026-09-26）。连接器不能建 Worker、读写构建设置与日志、改 DNS 或配 Redirect Rules；需在控制台操作，或给环境加 `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID` 后用 wrangler。
+- **Cloudflare**：已有 `neko-site`、`neko-work` 两个 Worker（2026-09-26）。连接器不能建 Worker、读写构建设置与日志、改 DNS 或配 Redirect Rules；需在控制台操作，或给环境加 `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID` 后用 wrangler。云端开发环境的网络目前访问不到 `api.cloudflare.com`、`*.workers.dev` 与 `work.neko.icu`，线上效果需站长在浏览器确认。
 - **Netlify**：`blogneko` 服务 `blog.neko.icu`，待下线。`pelorus-apk`（apk.neko.icu）、`home-preview`（preview.neko.icu）、`n3ko`、`lucent-vacherin-42f756` 与本仓库无关，不要动。
 - **Vercel**：`blog` 项目为本仓库旧部署，已关闭 Git 部署，待删除。
